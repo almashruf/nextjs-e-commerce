@@ -3,7 +3,7 @@ import { TypewriterEffectSmooth } from "../../components/ui/typewriter-effect";
 export function TypewriterEffectSmoothDemo() {
   const words = [
     {
-      text: "Welcome to Rasel Scam-Valy E-commerce.",
+      text: "Welcome to Rasel-Valy E-commerce.",
       className: "text-blue-500 dark:text-red-300",
     },
   ];
