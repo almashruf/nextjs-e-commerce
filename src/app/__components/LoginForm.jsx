@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { AuroraBackground } from "../../components/ui/aurora-background";
 import { useRouter } from "next/navigation";
+import { login } from "@/api/request";
+import { Navigate } from "react-router-dom";
 
 
 export function LoginForm() {

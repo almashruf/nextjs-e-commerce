@@ -51,11 +51,11 @@ export function Navbar({ className }) {
       <div>
         <div className="absolute top-0 right-5">
           <Menu setActive={setIsMenuVisible}>
-            <MenuItem
+          <MenuItem
               setActive={setIsMenuVisible}
               active={isMenuVisible}
               item="Go to"
-              src="/images/profile.jpg"
+              src="/image/tonoy.png"
             >
               <div className="flex flex-col space-y-4 text-sm">
                 <HoveredLink href="/profile">Profile</HoveredLink>
