@@ -8,8 +8,6 @@ import { motion } from "framer-motion";
 import { AuroraBackground } from "../../components/ui/aurora-background";
 import { useRouter } from "next/navigation";
 import { login } from "@/api/request";
-import { Navigate } from "react-router-dom";
-
 
 export function LoginForm() {
   const [formData, setFormData] = useState({
@@ -34,12 +32,13 @@ export function LoginForm() {
       username: formData.userName, // Ensure this matches API expectations
       password: formData.password, // Ensure this matches API expectations
     };
-
     const response = login(payload);
+
     console.log("Login: ", response);
     const { token } = response;
     localStorage.setItem("authToken", token);
     router.push("/home");
+
   };
 
   return (

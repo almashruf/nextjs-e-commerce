@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem } from "../../components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
-import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { TypewriterEffectSmoothDemo } from "./TypewriterEffect";
 
 export function Navbar({ className }) {

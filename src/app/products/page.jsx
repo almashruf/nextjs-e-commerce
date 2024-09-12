@@ -1,4 +1,4 @@
-import { BentoGridDemo } from "@/app/__components/BentoGrid";
+import { BentoGridDemo } from "@/app/__components/BentoGridCard";
 import React from "react";
 
 export default async function page() {
