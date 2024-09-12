@@ -5,12 +5,14 @@ import { HoveredLink, Menu, MenuItem } from "../../components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { TypewriterEffectSmoothDemo } from "./TypewriterEffect";
+import { useAuth } from "@/providers/auth-provider";
 
 export function Navbar({ className }) {
   const [isMenuVisible, setIsMenuVisible] = useState(true);
 
   const [active, setActive] = useState(null);
   const router = useRouter();
+  const { user } = useAuth();
 
   return (
     <div>
@@ -53,12 +55,18 @@ export function Navbar({ className }) {
           <MenuItem
               setActive={setIsMenuVisible}
               active={isMenuVisible}
-              item="Go to"
-              src="/image/tonoy.png"
+              item={user ? "Go to" : "Login"}
+              src={user ? user?.image : "/images/profile.jpg"}
             >
               <div className="flex flex-col space-y-4 text-sm">
-                <HoveredLink href="/profile">Profile</HoveredLink>
-                <HoveredLink href="/login">Login</HoveredLink>
+              {user ? (
+                  <>
+                    <HoveredLink href="/profile">Profile</HoveredLink>
+                    <HoveredLink href="/home">Logout</HoveredLink>
+                  </>
+                ) : (
+                  <HoveredLink href="/login">Login</HoveredLink>
+                )}
               </div>
             </MenuItem>
           </Menu>

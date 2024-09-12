@@ -1,13 +1,12 @@
 "use client";
 
 import { LoginForm } from "../__components/LoginForm";
+import React from "react";
 
-function page(){
+export default function page(){
     return(
         <div>
             <LoginForm/>
         </div>
     )
 }
-
-export default page;
