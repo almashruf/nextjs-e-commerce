@@ -1,27 +1,22 @@
 import { LOGIN_API, ME_API, PRODUCTS_API } from "./endpoints";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const login = async ({ username, password }) => {
-  const loginURL = `${BASE_URL}/${LOGIN_API}`;
-  try {
-    const response = await fetch(loginURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    });
-    if (!response.ok) {
-      throw new Error(`Login failed: ${response.status}`);
-    }
+import axios from "axios";
 
-    const data = await response.json();
-    console.log("Logged In: ", data);
-    return data;
-  } catch (error) {
-    console.error("Error during login:", error);
-  }
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+export const login = ({ username, password }) => {
+  const loginResponse = axiosInstance.post(LOGIN_API, {
+    username,
+    password,
+  });
+  console.log("This is login data: ", loginResponse);
+  return loginResponse;
 };
 
 export const getUser = async (token) => {
@@ -83,4 +78,26 @@ export const getUserData = async () => {
 
   try {
   } catch {}
+};
+
+//API for delete
+export const deleteProduct = async ({ id }) => {
+  const deleteProductURL = `${BASE_URL}/${PRODUCTS_API}/${id}`;
+  try {
+    const response = await fetch(deleteProductURL, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Network response was not ok. Status: ${response.status}`
+      );
+    }
+
+    const deletedProductData = await response.json();
+    return deletedProductData;
+
+  } catch (error) {
+    console.error("Error occurred during fetching products:", error);
+  }
 };
